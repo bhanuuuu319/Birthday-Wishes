@@ -1,0 +1,5085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday ❤️</title>
+
+<!-- =========================================================
+     BOOTSTRAP
+========================================================= -->
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+>
+
+<!-- =========================================================
+     BOOTSTRAP ICONS
+========================================================= -->
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+>
+
+<!-- =========================================================
+     GOOGLE FONTS
+========================================================= -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Parisienne&display=swap"
+    rel="stylesheet"
+>
+
+<!-- =========================================================
+     SQL.JS
+========================================================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.js"></script>
+
+<style>
+
+/* =========================================================
+   BASIC
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    font-family: "Inter", sans-serif;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255, 0, 50, 0.20),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(180, 0, 30, 0.18),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(255, 40, 40, 0.08),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #020202,
+            #100305,
+            #030303
+        );
+
+    background-attachment: fixed;
+}
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+.background-glow {
+    position: fixed;
+
+    width: 450px;
+    height: 450px;
+
+    border-radius: 50%;
+
+    filter: blur(130px);
+
+    pointer-events: none;
+
+    z-index: -5;
+}
+
+.glow1 {
+    top: -180px;
+    left: -180px;
+
+    background: rgba(255, 0, 45, 0.22);
+
+    animation:
+        glowAnimation 8s infinite alternate;
+}
+
+.glow2 {
+    right: -180px;
+    bottom: -150px;
+
+    background: rgba(180, 0, 30, 0.18);
+
+    animation:
+        glowAnimation 10s infinite alternate-reverse;
+}
+
+@keyframes glowAnimation {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.3);
+    }
+}
+
+/* =========================================================
+   STARS
+========================================================= */
+
+.stars {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: -3;
+}
+
+.star {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    opacity: 0.5;
+
+    animation:
+        twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+
+    0%, 100% {
+        opacity: 0.1;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* =========================================================
+   BALLOONS
+========================================================= */
+
+.balloons {
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.balloon {
+    position: absolute;
+
+    bottom: -180px;
+
+    width: 65px;
+    height: 80px;
+
+    border-radius:
+        50%
+        50%
+        45%
+        45%;
+
+    animation:
+        balloonFloat linear forwards;
+
+    filter:
+        drop-shadow(
+            0 0 15px
+            rgba(255,0,40,0.35)
+        );
+}
+
+.balloon::before {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    bottom: -4px;
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(45deg);
+
+    background: inherit;
+}
+
+.balloon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 1px;
+    height: 130px;
+
+    background:
+        rgba(255,255,255,0.4);
+
+    left: 50%;
+    top: 100%;
+}
+
+.balloon.red {
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #ff8080,
+            #d40025 45%,
+            #57000f
+        );
+}
+
+.balloon.dark {
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #555,
+            #151515 45%,
+            #000
+        );
+}
+
+.balloon.crimson {
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #ff5252,
+            #8b0018 50%,
+            #250006
+        );
+}
+
+@keyframes balloonFloat {
+
+    0% {
+
+        transform:
+            translateY(0)
+            translateX(0)
+            rotate(-5deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+
+        transform:
+            translateY(-55vh)
+            translateX(35px)
+            rotate(7deg);
+    }
+
+    100% {
+
+        transform:
+            translateY(-125vh)
+            translateX(-30px)
+            rotate(-8deg);
+
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+.floating-heart {
+
+    position: fixed;
+
+    bottom: -30px;
+
+    color: #ff1744;
+
+    font-size: 20px;
+
+    pointer-events: none;
+
+    z-index: 4;
+
+    animation:
+        floatHeart linear forwards;
+
+    text-shadow:
+        0 0 10px #ff1744,
+        0 0 25px #ff1744;
+}
+
+@keyframes floatHeart {
+
+    0% {
+
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(0.5);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+
+        transform:
+            translateY(-110vh)
+            rotate(360deg)
+            scale(1.3);
+
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.premium-nav {
+
+    margin:
+        25px auto 0;
+
+    width: 94%;
+
+    padding:
+        12px 22px;
+
+    border-radius: 22px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.14);
+
+    background:
+        rgba(8,8,8,0.75);
+
+    backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 20px 70px
+        rgba(0,0,0,0.5);
+
+    position: relative;
+
+    z-index: 20;
+}
+
+.navbar-brand {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    color:
+        #ff334f !important;
+}
+
+.brand-icon {
+    margin-right: 8px;
+}
+
+.nav-link {
+
+    color:
+        #d8d0df !important;
+
+    margin:
+        0 8px;
+
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+
+    color:
+        #ff334f !important;
+
+    transform:
+        translateY(-2px);
+}
+
+.nav-link.active {
+    color:
+        #ff334f !important;
+}
+
+.music-button {
+
+    border:
+        1px solid
+        rgba(255,255,255,0.15);
+
+    border-radius: 50px;
+
+    padding:
+        9px 18px;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    color: white;
+
+    transition: 0.3s;
+}
+
+.music-button:hover {
+
+    color:
+        #ff334f;
+
+    border-color:
+        #ff334f;
+
+    transform:
+        translateY(-2px);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height: 720px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding:
+        80px 0
+        50px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.hero-content {
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 6;
+}
+
+.eyebrow {
+
+    color:
+        #ff334f;
+
+    font-size: 12px;
+
+    letter-spacing: 5px;
+
+    font-weight: 700;
+
+    margin-bottom: 20px;
+}
+
+.hero-title {
+
+    font-family:
+        "Parisienne",
+        cursive;
+
+    font-size:
+        clamp(80px, 11vw, 145px);
+
+    line-height:
+        0.85;
+
+    font-weight: 400;
+
+    color: white;
+}
+
+.hero-title span {
+
+    display: block;
+
+    color:
+        #ff334f;
+
+    text-shadow:
+        0 0 10px
+        rgba(255,0,40,0.2),
+
+        0 0 40px
+        rgba(255,0,40,0.3);
+
+    animation:
+        redGlow 2s infinite alternate;
+}
+
+@keyframes redGlow {
+
+    from {
+
+        text-shadow:
+            0 0 10px
+            rgba(255,0,40,0.15);
+    }
+
+    to {
+
+        text-shadow:
+            0 0 35px
+            rgba(255,0,40,0.7);
+    }
+}
+
+.heart-title {
+
+    font-size: 45px;
+
+    color:
+        #ff1744;
+
+    margin: 20px;
+
+    animation:
+        heartbeat 1.5s infinite;
+
+    text-shadow:
+        0 0 20px #ff1744;
+}
+
+@keyframes heartbeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.birthday-message {
+
+    max-width: 850px;
+
+    margin:
+        0 auto 25px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(27px, 4vw, 43px);
+
+    font-weight: 600;
+
+    line-height: 1.25;
+
+    color: #fff;
+}
+
+.gold-line {
+
+    width: 350px;
+
+    max-width: 80%;
+
+    height: 1px;
+
+    margin:
+        25px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ff334f,
+            transparent
+        );
+}
+
+.sub-message {
+
+    max-width: 650px;
+
+    margin: auto;
+
+    color:
+        #bfb5c9;
+
+    line-height: 1.8;
+
+    font-size: 15px;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.button-area {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin-top: 30px;
+}
+
+.red-button {
+
+    border: none;
+
+    padding:
+        14px 26px;
+
+    border-radius: 50px;
+
+    font-weight: 700;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff334f,
+            #c90025,
+            #700014
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(255,0,40,0.25);
+
+    transition: 0.35s;
+
+    cursor: pointer;
+}
+
+.red-button:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.03);
+
+    box-shadow:
+        0 15px 45px
+        rgba(255,0,40,0.4);
+}
+
+.outline-button {
+
+    border:
+        1px solid
+        rgba(255,255,255,0.2);
+
+    padding:
+        13px 24px;
+
+    border-radius: 50px;
+
+    background:
+        rgba(255,255,255,0.03);
+
+    color: white;
+
+    transition: 0.3s;
+
+    cursor: pointer;
+}
+
+.outline-button:hover {
+
+    border-color:
+        #ff334f;
+
+    color:
+        #ff334f;
+
+    transform:
+        translateY(-4px);
+}
+
+/* =========================================================
+   CAKE AREA
+========================================================= */
+
+.cake-area {
+
+    height: 460px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+}
+
+.cake-glow {
+
+    position: absolute;
+
+    width: 330px;
+    height: 250px;
+
+    background:
+        rgba(255,30,50,0.16);
+
+    filter:
+        blur(65px);
+
+    border-radius: 50%;
+
+    animation:
+        cakeGlow 2s infinite alternate;
+}
+
+@keyframes cakeGlow {
+
+    from {
+        transform: scale(0.9);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
+/* =========================================================
+   ORIGINAL HERO CAKE
+========================================================= */
+
+.cake {
+
+    width: 290px;
+    height: 250px;
+
+    position: relative;
+
+    animation:
+        cakeFloat 4s infinite ease-in-out;
+
+    z-index: 7;
+}
+
+@keyframes cakeFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-14px);
+    }
+}
+
+.cake-top {
+
+    position: absolute;
+
+    top: 35px;
+    left: 35px;
+
+    width: 220px;
+    height: 60px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            #8d1f2f,
+            #2b070d
+        );
+
+    z-index: 3;
+}
+
+.cake-body {
+
+    position: absolute;
+
+    top: 65px;
+    left: 40px;
+
+    width: 210px;
+    height: 130px;
+
+    border-radius:
+        10px
+        10px
+        25px
+        25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #160306,
+            #7a1025,
+            #160306
+        );
+
+    box-shadow:
+        inset
+        0 15px 20px
+        rgba(255,255,255,0.05);
+}
+
+.icing {
+
+    position: absolute;
+
+    top: 52px;
+    left: 40px;
+
+    width: 210px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    background:
+        #3b0a14;
+
+    border-bottom:
+        8px solid
+        #ff4965;
+
+    z-index: 4;
+}
+
+.cake-body::before {
+
+    content: "♥";
+
+    position: absolute;
+
+    left: 45px;
+    top: 45px;
+
+    color:
+        #ff4965;
+
+    font-size: 28px;
+}
+
+.cake-body::after {
+
+    content: "♥";
+
+    position: absolute;
+
+    right: 45px;
+    top: 45px;
+
+    color:
+        #ff4965;
+
+    font-size: 28px;
+}
+
+.plate {
+
+    position: absolute;
+
+    bottom: 20px;
+    left: 5px;
+
+    width: 280px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            #6d6d6d,
+            #151515
+        );
+
+    box-shadow:
+        0 15px 30px
+        rgba(0,0,0,0.6);
+}
+
+/* =========================================================
+   CANDLES
+========================================================= */
+
+.candle {
+
+    position: absolute;
+
+    width: 13px;
+    height: 58px;
+
+    top: -48px;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #fff 0 5px,
+            #ff334f 5px 10px
+        );
+
+    border-radius: 3px;
+
+    z-index: 10;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.candle:hover {
+    transform: scale(1.08);
+}
+
+.candle1 {
+    left: 50px;
+}
+
+.candle2 {
+
+    left: 104px;
+
+    height: 70px;
+
+    top: -60px;
+}
+
+.candle3 {
+    right: 50px;
+}
+
+/* FLAME */
+
+.flame {
+
+    position: absolute;
+
+    width: 12px;
+    height: 20px;
+
+    top: -19px;
+    left: 0;
+
+    border-radius:
+        50%
+        50%
+        45%
+        45%;
+
+    background:
+        radial-gradient(
+            circle at 50% 70%,
+            white 0 20%,
+            #ffd36a 35%,
+            #ff6b00 70%,
+            #ff2500
+        );
+
+    box-shadow:
+        0 0 15px #ff873d,
+        0 0 30px #ff3d00;
+
+    animation:
+        flame 0.7s infinite alternate;
+
+    transform-origin:
+        bottom;
+}
+
+@keyframes flame {
+
+    from {
+
+        transform:
+            scale(0.8)
+            rotate(-4deg);
+    }
+
+    to {
+
+        transform:
+            scale(1.15)
+            rotate(4deg);
+    }
+}
+
+/* AUTO LIGHT */
+
+.candle.not-lit .flame {
+
+    opacity: 0;
+
+    transform:
+        scale(0)
+        translateY(10px);
+}
+
+.candle.lit .flame {
+
+    opacity: 1;
+
+    animation:
+        flame 0.7s infinite alternate,
+        flameAppear 0.5s ease;
+}
+
+@keyframes flameAppear {
+
+    from {
+        transform:
+            scale(0)
+            translateY(15px);
+    }
+
+    to {
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+/* EXTINGUISHED */
+
+.candle.extinguished .flame {
+    display: none;
+}
+
+.candle.extinguished {
+    opacity: 0.7;
+}
+
+.candle.extinguished::after {
+
+    content: "☁";
+
+    position: absolute;
+
+    top: -35px;
+    left: -5px;
+
+    color:
+        rgba(220,220,220,0.6);
+
+    font-size: 18px;
+
+    animation:
+        smoke 2s ease-out forwards;
+}
+
+@keyframes smoke {
+
+    from {
+
+        opacity: 0.8;
+
+        transform:
+            translateY(0)
+            scale(0.8);
+    }
+
+    to {
+
+        opacity: 0;
+
+        transform:
+            translateY(-35px)
+            scale(1.5);
+    }
+}
+
+/* =========================================================
+   CANDLE INSTRUCTION
+========================================================= */
+
+.candle-instruction {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: 100%;
+
+    text-align: center;
+
+    color: #aaa;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+}
+
+.candle-instruction i {
+    color:
+        #ff334f;
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section {
+
+    padding:
+        70px 0;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.section-title {
+
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+.section-title small {
+
+    color:
+        #ff334f;
+
+    letter-spacing: 4px;
+
+    font-weight: 700;
+}
+
+.section-title h2 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 45px;
+
+    margin-top: 8px;
+}
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.feature-card {
+
+    height: 100%;
+
+    padding:
+        30px 22px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.1);
+
+    border-radius: 22px;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    backdrop-filter:
+        blur(15px);
+
+    transition:
+        0.4s;
+}
+
+.feature-card:hover {
+
+    transform:
+        translateY(-10px);
+
+    border-color:
+        rgba(255,50,80,0.4);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,0.4);
+}
+
+.feature-icon {
+
+    width: 58px;
+    height: 58px;
+
+    margin:
+        0 auto 18px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    color:
+        #ff334f;
+
+    font-size: 23px;
+
+    border:
+        1px solid
+        rgba(255,50,80,0.25);
+
+    background:
+        rgba(255,50,80,0.06);
+}
+
+.feature-card h3 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    color:
+        #ff6279;
+
+    font-size: 27px;
+}
+
+.feature-card p {
+
+    color:
+        #aaa0b2;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+/* =========================================================
+   3D CAKE SECTION
+========================================================= */
+
+.cake-cut-section {
+
+    min-height: 900px;
+
+    padding:
+        110px 0 130px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    z-index: 5;
+}
+
+.cake-cut-title {
+
+    text-align: center;
+
+    margin-bottom: 35px;
+}
+
+.cake-cut-title small {
+
+    color:
+        #ff334f;
+
+    letter-spacing: 5px;
+
+    font-weight: 700;
+}
+
+.cake-cut-title h2 {
+
+    font-family:
+        "Parisienne",
+        cursive;
+
+    font-size:
+        clamp(55px, 8vw, 95px);
+
+    color: white;
+
+    margin-top: 10px;
+}
+
+.cake-cut-title h2 span {
+    color:
+        #ff334f;
+}
+
+.cake-cut-title p {
+
+    max-width: 650px;
+
+    margin:
+        10px auto;
+
+    color:
+        #aaa0b0;
+
+    line-height: 1.8;
+}
+
+/* =========================================================
+   NAME INPUT
+========================================================= */
+
+.name-box {
+
+    max-width: 600px;
+
+    margin:
+        0 auto 45px;
+
+    text-align: center;
+
+    padding:
+        25px;
+
+    border:
+        1px solid
+        rgba(255,50,80,0.2);
+
+    border-radius: 22px;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    backdrop-filter:
+        blur(15px);
+}
+
+.name-box label {
+
+    display: block;
+
+    color:
+        #ff526a;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+.name-input {
+
+    width: 100%;
+
+    padding:
+        15px 20px;
+
+    border-radius: 50px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.15);
+
+    background:
+        rgba(0,0,0,0.5);
+
+    color: white;
+
+    outline: none;
+
+    text-align: center;
+
+    font-size: 16px;
+
+    transition: 0.3s;
+}
+
+.name-input:focus {
+
+    border-color:
+        #ff334f;
+
+    box-shadow:
+        0 0 25px
+        rgba(255,30,50,0.15);
+}
+
+.name-input::placeholder {
+    color:
+        #68606c;
+}
+
+/* =========================================================
+   3D CAKE STAGE
+========================================================= */
+
+.cake-stage {
+
+    position: relative;
+
+    width: 440px;
+    height: 470px;
+
+    max-width: 94vw;
+
+    margin:
+        auto;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    perspective: 1200px;
+
+    cursor:
+        crosshair;
+
+    user-select: none;
+
+    touch-action: none;
+}
+
+.cake-stage::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,0,40,0.15),
+            transparent 65%
+        );
+
+    filter:
+        blur(25px);
+}
+
+/* =========================================================
+   3D CAKE SCENE
+========================================================= */
+
+.cake-scene {
+
+    --tiltX: 0deg;
+    --tiltY: 0deg;
+
+    position: relative;
+
+    width: 380px;
+    height: 350px;
+
+    transform-style:
+        preserve-3d;
+
+    transform:
+        rotateX(var(--tiltX))
+        rotateY(var(--tiltY));
+
+    transition:
+        transform 0.15s ease-out;
+
+    z-index: 5;
+}
+
+/* =========================================================
+   CAKE SHADOW
+========================================================= */
+
+.cake-shadow {
+
+    position: absolute;
+
+    width: 340px;
+    height: 55px;
+
+    left: 20px;
+    bottom: 20px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0,0,0,0.8);
+
+    filter:
+        blur(18px);
+
+    transform:
+        rotateX(60deg)
+        translateZ(-10px);
+}
+
+/* =========================================================
+   CAKE PIECES
+========================================================= */
+
+.cake-piece {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 380px;
+    height: 350px;
+
+    transform-style:
+        preserve-3d;
+
+    transition:
+        transform 1s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.cake-left {
+
+    clip-path:
+        inset(0 50% 0 0);
+}
+
+.cake-right {
+
+    clip-path:
+        inset(0 0 0 50%);
+}
+
+/* =========================================================
+   CAKE BODY
+========================================================= */
+
+.big-cake-body {
+
+    position: absolute;
+
+    width: 300px;
+    height: 150px;
+
+    left: 40px;
+    top: 105px;
+
+    border-radius:
+        15px
+        15px
+        35px
+        35px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #210006,
+            #850d27 20%,
+            #4b0716 50%,
+            #920f2d 80%,
+            #180004
+        );
+
+    box-shadow:
+
+        inset
+        15px 0 20px
+        rgba(255,255,255,0.04),
+
+        inset
+        -20px 0 30px
+        rgba(0,0,0,0.6),
+
+        0 25px 45px
+        rgba(0,0,0,0.55);
+
+    transform:
+        translateZ(15px);
+}
+
+/* CAKE TOP */
+
+.big-cake-top {
+
+    position: absolute;
+
+    width: 310px;
+    height: 95px;
+
+    left: 35px;
+    top: 55px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 45%,
+            #c43b56,
+            #731024 55%,
+            #27030b
+        );
+
+    border:
+        3px solid
+        #a41d3b;
+
+    box-shadow:
+        inset
+        0 10px 20px
+        rgba(255,255,255,0.12);
+
+    transform:
+        rotateX(55deg)
+        translateZ(35px);
+}
+
+/* FROSTING */
+
+.big-frosting {
+
+    position: absolute;
+
+    width: 305px;
+    height: 80px;
+
+    left: 37px;
+    top: 78px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ff6c83,
+            #b51d3d 65%,
+            #6d0b20
+        );
+
+    box-shadow:
+        0 8px 15px
+        rgba(0,0,0,0.3);
+
+    transform:
+        rotateX(52deg)
+        translateZ(55px);
+
+    z-index: 5;
+}
+
+/* FROSTING DRIPS */
+
+.big-frosting::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 15px;
+    right: 15px;
+
+    bottom: -25px;
+
+    height: 35px;
+
+    background:
+        radial-gradient(
+            circle at 10px 0,
+            #ff526a 0 14px,
+            transparent 15px
+        );
+
+    opacity: 0.95;
+}
+
+/* =========================================================
+   CAKE LAYERS
+========================================================= */
+
+.cake-layer-one {
+
+    position: absolute;
+
+    width: 285px;
+    height: 16px;
+
+    left: 47px;
+    top: 130px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff3f5d,
+            #ff8294,
+            #ff3f5d
+        );
+
+    border-radius: 50%;
+
+    transform:
+        translateZ(32px);
+
+    z-index: 7;
+}
+
+.cake-layer-two {
+
+    position: absolute;
+
+    width: 270px;
+    height: 13px;
+
+    left: 55px;
+    top: 175px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff334f,
+            #ff6b7e,
+            #ff334f
+        );
+
+    border-radius: 50%;
+
+    transform:
+        translateZ(30px);
+
+    z-index: 7;
+}
+
+/* =========================================================
+   CAKE DECORATIONS
+========================================================= */
+
+.cake-heart {
+
+    position: absolute;
+
+    color:
+        #ff7085;
+
+    font-size: 28px;
+
+    text-shadow:
+        0 0 12px
+        rgba(255,50,80,0.7);
+
+    transform:
+        translateZ(35px);
+
+    z-index: 8;
+}
+
+.heart-one {
+    left: 85px;
+    top: 145px;
+}
+
+.heart-two {
+    right: 85px;
+    top: 145px;
+}
+
+.heart-three {
+    left: 175px;
+    top: 185px;
+    font-size: 22px;
+}
+
+/* =========================================================
+   PLATE
+========================================================= */
+
+.big-plate {
+
+    position: absolute;
+
+    width: 365px;
+    height: 55px;
+
+    left: 7px;
+    bottom: 35px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            #777,
+            #292929 45%,
+            #080808
+        );
+
+    box-shadow:
+        0 25px 45px
+        rgba(0,0,0,0.7);
+
+    transform:
+        rotateX(55deg)
+        translateZ(-15px);
+
+    z-index: 1;
+}
+
+.big-plate::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 310px;
+    height: 35px;
+
+    left: 27px;
+    top: 8px;
+
+    border-radius: 50%;
+
+    border:
+        2px solid
+        rgba(255,255,255,0.12);
+}
+
+/* =========================================================
+   CAKE NAME
+========================================================= */
+
+.cake-name {
+
+    position: absolute;
+
+    width: 270px;
+
+    left: 55px;
+    top: 215px;
+
+    text-align: center;
+
+    font-family:
+        "Parisienne",
+        cursive;
+
+    font-size: 32px;
+
+    color:
+        #fff;
+
+    text-shadow:
+        0 0 8px #ff334f,
+        0 0 20px #ff334f;
+
+    transform:
+        translateZ(42px);
+
+    z-index: 20;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+/* =========================================================
+   CANDLES ON 3D CAKE
+========================================================= */
+
+.big-candles {
+
+    position: absolute;
+
+    top: 5px;
+    left: 0;
+
+    width: 100%;
+
+    height: 130px;
+
+    z-index: 30;
+}
+
+.big-candle {
+
+    position: absolute;
+
+    width: 16px;
+    height: 75px;
+
+    border-radius: 4px;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #fff 0 6px,
+            #ff334f 6px 12px
+        );
+
+    box-shadow:
+        5px 10px 15px
+        rgba(0,0,0,0.4);
+
+    transform:
+        translateZ(80px);
+}
+
+.big-candle:nth-child(1) {
+    left: 125px;
+}
+
+.big-candle:nth-child(2) {
+
+    left: 182px;
+
+    height: 90px;
+}
+
+.big-candle:nth-child(3) {
+    left: 240px;
+}
+
+/* BIG FLAMES */
+
+.big-flame {
+
+    position: absolute;
+
+    width: 17px;
+    height: 28px;
+
+    left: -1px;
+    top: -27px;
+
+    border-radius:
+        50%
+        50%
+        45%
+        45%;
+
+    background:
+        radial-gradient(
+            circle at 50% 70%,
+            white 0 18%,
+            #ffd56b 30%,
+            #ff7600 65%,
+            #ff2200
+        );
+
+    box-shadow:
+        0 0 15px #ff9a45,
+        0 0 35px #ff3c00;
+
+    animation:
+        flame 0.7s infinite alternate;
+}
+
+/* =========================================================
+   CUT LINE
+========================================================= */
+
+.cut-line {
+
+    position: absolute;
+
+    width: 5px;
+    height: 245px;
+
+    left: 50%;
+    top: 78px;
+
+    transform:
+        translateX(-50%)
+        translateZ(100px);
+
+    background:
+        linear-gradient(
+            transparent,
+            #ffffff,
+            #ff334f,
+            #ffffff,
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px
+        #ffffff,
+
+        0 0 35px
+        #ff334f;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.3s;
+
+    z-index: 50;
+
+    pointer-events: none;
+}
+
+.cake-scene.cut .cut-line {
+    opacity: 1;
+}
+
+/* =========================================================
+   CUT ANIMATION
+========================================================= */
+
+.cake-scene.cut .cake-left {
+
+    transform:
+        translateX(-55px)
+        rotateZ(-4deg)
+        translateZ(10px);
+}
+
+.cake-scene.cut .cake-right {
+
+    transform:
+        translateX(55px)
+        rotateZ(4deg)
+        translateZ(10px);
+}
+
+.cake-scene.cut {
+
+    transition:
+        transform 0.5s ease;
+}
+
+/* =========================================================
+   KNIFE CURSOR
+========================================================= */
+
+.knife {
+
+    position: fixed;
+
+    width: 75px;
+    height: 25px;
+
+    pointer-events: none;
+
+    z-index: 99999;
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-35deg);
+}
+
+.knife::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 50px;
+    height: 8px;
+
+    right: 0;
+    top: 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #222,
+            #aaa,
+            #fff
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 35%,
+            100% 65%,
+            0 100%
+        );
+
+    box-shadow:
+        0 0 8px
+        rgba(255,255,255,0.5);
+}
+
+.knife::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 24px;
+    height: 14px;
+
+    left: 0;
+    top: 5px;
+
+    border-radius: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff334f,
+            #720014
+        );
+
+    box-shadow:
+        0 0 10px
+        rgba(255,0,40,0.5);
+}
+
+.knife.active {
+    opacity: 1;
+}
+
+/* =========================================================
+   CUTTING INSTRUCTION
+========================================================= */
+
+.cut-instruction {
+
+    text-align: center;
+
+    margin-top: -5px;
+
+    color:
+        #aaa0b0;
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+}
+
+.cut-instruction strong {
+    color:
+        #ff526a;
+}
+
+/* =========================================================
+   RESET CAKE
+========================================================= */
+
+.reset-cake {
+
+    display: none;
+
+    margin:
+        20px auto 0;
+}
+
+.reset-cake.show {
+    display: block;
+}
+
+/* =========================================================
+   WISH
+========================================================= */
+
+.wish-section {
+
+    padding:
+        80px 0;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.wish-box {
+
+    max-width: 850px;
+
+    margin: auto;
+
+    text-align: center;
+
+    padding:
+        55px 35px;
+
+    border-radius: 30px;
+
+    border:
+        1px solid
+        rgba(255,40,70,0.25);
+
+    background:
+
+        radial-gradient(
+            circle at top,
+            rgba(255,0,40,0.15),
+            transparent 60%
+        ),
+
+        rgba(255,255,255,0.035);
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,0.3);
+}
+
+.wish-box h2 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 52px;
+
+    color:
+        #ff526a;
+}
+
+.wish-box p {
+
+    color:
+        #aaa1b2;
+}
+
+.wish-input {
+
+    margin:
+        25px auto 0;
+
+    max-width: 600px;
+}
+
+textarea {
+
+    width: 100%;
+
+    padding: 17px;
+
+    border-radius: 17px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.13);
+
+    background:
+        rgba(0,0,0,0.3);
+
+    color: white;
+
+    outline: none;
+
+    resize: vertical;
+}
+
+textarea:focus {
+
+    border-color:
+        #ff334f;
+
+    box-shadow:
+        0 0 20px
+        rgba(255,30,50,0.1);
+}
+
+textarea::placeholder {
+    color:
+        #777080;
+}
+
+#status {
+
+    min-height: 30px;
+
+    margin-top: 15px;
+
+    color:
+        #ff526a;
+
+    font-weight: 600;
+}
+
+/* =========================================================
+   QUOTE
+========================================================= */
+
+.quote {
+
+    padding:
+        60px 0 90px;
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.quote-mark {
+
+    font-family: Georgia;
+
+    color:
+        #ff334f;
+
+    font-size: 90px;
+
+    line-height: 50px;
+}
+
+.quote p {
+
+    max-width: 850px;
+
+    margin:
+        15px auto;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 34px;
+}
+
+.quote span {
+    color:
+        #a9a0af;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    padding:
+        20px 0 30px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.footer-box {
+
+    padding:
+        18px 25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.1);
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    color:
+        #aaa0b0;
+
+    font-size: 13px;
+}
+
+.database-status {
+    color:
+        #ff526a;
+}
+
+.database-dot {
+
+    display: inline-block;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background:
+        #ff334f;
+
+    box-shadow:
+        0 0 12px #ff334f;
+
+    margin-right: 6px;
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.birthday-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0,0,0,0.82);
+
+    backdrop-filter:
+        blur(12px);
+
+    z-index: 99999;
+}
+
+.birthday-modal.show {
+
+    display: flex;
+
+    animation:
+        fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-box {
+
+    position: relative;
+
+    width: 100%;
+
+    max-width: 550px;
+
+    padding:
+        50px 35px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    border:
+        1px solid
+        rgba(255,50,80,0.35);
+
+    background:
+
+        radial-gradient(
+            circle at top,
+            rgba(255,0,40,0.22),
+            transparent 60%
+        ),
+
+        #090909;
+
+    box-shadow:
+        0 40px 100px
+        rgba(0,0,0,0.7);
+
+    animation:
+        modalPop 0.5s ease;
+}
+
+@keyframes modalPop {
+
+    from {
+
+        transform:
+            scale(0.7)
+            translateY(30px);
+
+        opacity: 0;
+    }
+
+    to {
+
+        transform:
+            scale(1)
+            translateY(0);
+
+        opacity: 1;
+    }
+}
+
+.close-modal {
+
+    position: absolute;
+
+    right: 18px;
+    top: 12px;
+
+    border: none;
+
+    background: none;
+
+    color: white;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+.modal-heart {
+
+    color:
+        #ff1744;
+
+    font-size: 80px;
+
+    animation:
+        heartbeat 1.2s infinite;
+
+    text-shadow:
+        0 0 30px #ff1744;
+}
+
+.modal-box h2 {
+
+    font-family:
+        "Parisienne",
+        cursive;
+
+    color:
+        #ff334f;
+
+    font-size: 70px;
+}
+
+.modal-box p {
+
+    color:
+        #bbb1c2;
+
+    line-height: 1.8;
+
+    margin-bottom: 25px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .premium-nav {
+        width: 96%;
+    }
+
+    .hero {
+        padding-top: 50px;
+    }
+
+    .cake-area {
+        order: 2;
+    }
+
+    .hero-content {
+        order: 1;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .navbar-brand {
+        font-size: 23px;
+    }
+
+    .hero-title {
+        font-size: 75px;
+    }
+
+    .birthday-message {
+        font-size: 27px;
+    }
+
+    .cake {
+        transform: scale(0.82);
+    }
+
+    .section-title h2 {
+        font-size: 35px;
+    }
+
+    .wish-box {
+        padding:
+            40px 20px;
+    }
+
+    .wish-box h2 {
+        font-size: 42px;
+    }
+
+    .quote p {
+        font-size: 27px;
+    }
+
+    .footer-box {
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .balloon {
+
+        width: 45px;
+        height: 58px;
+    }
+
+    .cake-stage {
+
+        transform:
+            scale(0.78);
+
+        width: 400px;
+        margin-left: 50%;
+
+        transform-origin:
+            center center;
+    }
+
+    .cake-cut-section {
+
+        min-height: 820px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     BACKGROUND
+========================================================= -->
+
+<div class="background-glow glow1"></div>
+<div class="background-glow glow2"></div>
+
+<div class="stars" id="stars"></div>
+
+<div class="balloons" id="balloons"></div>
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="navbar navbar-expand-lg premium-nav">
+
+<div class="container-fluid">
+
+<a class="navbar-brand" href="#home">
+
+    <span class="brand-icon">🎂</span>
+
+    Birthday Vibes
+
+</a>
+
+<button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbar"
+>
+
+    <i class="bi bi-list text-white"></i>
+
+</button>
+
+<div
+    class="collapse navbar-collapse"
+    id="navbar"
+>
+
+<ul class="navbar-nav mx-auto">
+
+<li class="nav-item">
+
+<a
+    class="nav-link active"
+    href="#home"
+>
+Home
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a
+    class="nav-link"
+    href="#message"
+>
+Message
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a
+    class="nav-link"
+    href="#moments"
+>
+Moments
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a
+    class="nav-link"
+    href="#cake-cut"
+>
+Cake
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a
+    class="nav-link"
+    href="#wish"
+>
+Wish
+</a>
+
+</li>
+
+</ul>
+
+<button
+    class="music-button"
+    id="musicButton"
+>
+
+    <i class="bi bi-music-note-beamed"></i>
+
+    Music
+
+</button>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section
+    class="hero container"
+    id="home"
+>
+
+<div class="row align-items-center w-100">
+
+<!-- =====================================================
+     HERO CAKE
+===================================================== -->
+
+<div class="col-lg-5 cake-area">
+
+<div class="cake-glow"></div>
+
+<div class="cake">
+
+<div class="cake-top">
+
+<!-- CANDLE 1 -->
+
+<div
+    class="candle candle1 not-lit"
+    onclick="toggleCandle(this)"
+    title="Click to toggle candle"
+>
+
+<div class="flame"></div>
+
+</div>
+
+<!-- CANDLE 2 -->
+
+<div
+    class="candle candle2 not-lit"
+    onclick="toggleCandle(this)"
+    title="Click to toggle candle"
+>
+
+<div class="flame"></div>
+
+</div>
+
+<!-- CANDLE 3 -->
+
+<div
+    class="candle candle3 not-lit"
+    onclick="toggleCandle(this)"
+    title="Click to toggle candle"
+>
+
+<div class="flame"></div>
+
+</div>
+
+</div>
+
+<div class="icing"></div>
+
+<div class="cake-body"></div>
+
+<div class="plate"></div>
+
+</div>
+
+<div class="candle-instruction">
+
+<i class="bi bi-fire"></i>
+
+Candles will light automatically • Click to turn them off
+
+</div>
+
+</div>
+
+<!-- =====================================================
+     MESSAGE
+===================================================== -->
+
+<div
+    class="col-lg-7 hero-content"
+    id="message"
+>
+
+<div class="eyebrow">
+
+✦ &nbsp; A SPECIAL DAY &nbsp; ✦
+
+</div>
+
+<h1 class="hero-title">
+
+Happy
+
+<span>Birthday</span>
+
+</h1>
+
+<div class="heart-title">
+♡
+</div>
+
+<p
+    class="birthday-message"
+    id="birthdayMessage"
+>
+
+Loading your special message...
+
+</p>
+
+<div class="gold-line"></div>
+
+<p class="sub-message">
+
+May this new chapter of your life be filled
+with happiness, beautiful memories, endless
+smiles, love and everything your heart wishes for.
+
+</p>
+
+<div class="button-area">
+
+<button
+    class="red-button"
+    onclick="blowAllCandles()"
+>
+
+<i class="bi bi-fire"></i>
+
+Blow Out Candles
+
+</button>
+
+<button
+    class="outline-button"
+    onclick="relightCandles()"
+>
+
+<i class="bi bi-lightning-charge"></i>
+
+Relight
+
+</button>
+
+<button
+    class="outline-button"
+    onclick="celebrate()"
+>
+
+<i class="bi bi-stars"></i>
+
+Surprise Me
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+     MOMENTS
+========================================================= -->
+
+<section
+    class="section container"
+    id="moments"
+>
+
+<div class="section-title">
+
+<small>
+FOR SOMEONE SPECIAL
+</small>
+
+<h2>
+Beautiful wishes for a beautiful soul
+</h2>
+
+</div>
+
+<div class="row g-4">
+
+<div class="col-md-6 col-lg-3">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-gift"></i>
+
+</div>
+
+<h3>
+You Are Special
+</h3>
+
+<p>
+A unique person who makes
+ordinary moments feel extraordinary.
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-6 col-lg-3">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-stars"></i>
+
+</div>
+
+<h3>
+Keep Shining
+</h3>
+
+<p>
+May your smile continue to
+light up every place you enter.
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-6 col-lg-3">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-heart"></i>
+
+</div>
+
+<h3>
+More Happiness
+</h3>
+
+<p>
+May every new day bring
+more love, laughter and beautiful memories.
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-6 col-lg-3">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-balloon"></i>
+
+</div>
+
+<h3>
+Beautiful Years
+</h3>
+
+<p>
+Here's to more wonderful years
+and unforgettable moments.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+     3D CAKE CUTTING SECTION
+========================================================= -->
+
+<section
+    class="cake-cut-section"
+    id="cake-cut"
+>
+
+<div class="container">
+
+<div class="cake-cut-title">
+
+<small>
+THE FINAL CELEBRATION
+</small>
+
+<h2>
+Make a wish, <span>cut the cake</span> 🎂
+</h2>
+
+<p>
+
+Enter the birthday person's name below.
+It will appear directly on the cake.
+
+Then drag your cursor across the cake
+to cut it.
+
+</p>
+
+</div>
+
+<!-- =====================================================
+     NAME INPUT
+===================================================== -->
+
+<div class="name-box">
+
+<label for="nameInput">
+
+<i class="bi bi-person-heart"></i>
+
+ENTER BIRTHDAY NAME
+
+</label>
+
+<input
+    type="text"
+    id="nameInput"
+    class="name-input"
+    maxlength="25"
+    placeholder="Enter the birthday person's name..."
+    autocomplete="off"
+>
+
+<button
+    class="red-button mt-3"
+    onclick="updateCakeName()"
+>
+
+<i class="bi bi-cake2"></i>
+
+Put Name On Cake
+
+</button>
+
+</div>
+
+<!-- =====================================================
+     3D CAKE
+===================================================== -->
+
+<div
+    class="cake-stage"
+    id="cakeStage"
+>
+
+<div class="cake-shadow"></div>
+
+<div
+    class="cake-scene"
+    id="cakeScene"
+>
+
+<!-- LEFT CAKE PIECE -->
+
+<div class="cake-piece cake-left">
+
+<div class="big-cake-top"></div>
+
+<div class="big-cake-body"></div>
+
+<div class="big-frosting"></div>
+
+<div class="cake-layer-one"></div>
+
+<div class="cake-layer-two"></div>
+
+<div class="cake-heart heart-one">
+♥
+</div>
+
+<div class="cake-heart heart-two">
+♥
+</div>
+
+<div class="cake-heart heart-three">
+♥
+</div>
+
+<div
+    class="cake-name"
+    id="cakeNameLeft"
+>
+Your Name
+</div>
+
+<div class="big-plate"></div>
+
+</div>
+
+<!-- RIGHT CAKE PIECE -->
+
+<div class="cake-piece cake-right">
+
+<div class="big-cake-top"></div>
+
+<div class="big-cake-body"></div>
+
+<div class="big-frosting"></div>
+
+<div class="cake-layer-one"></div>
+
+<div class="cake-layer-two"></div>
+
+<div class="cake-heart heart-one">
+♥
+</div>
+
+<div class="cake-heart heart-two">
+♥
+</div>
+
+<div class="cake-heart heart-three">
+♥
+</div>
+
+<div
+    class="cake-name"
+    id="cakeNameRight"
+>
+Your Name
+</div>
+
+<div class="big-plate"></div>
+
+</div>
+
+<!-- =================================================
+     CAKE CANDLES
+================================================= -->
+
+<div class="big-candles">
+
+<div class="big-candle">
+
+<div class="big-flame"></div>
+
+</div>
+
+<div class="big-candle">
+
+<div class="big-flame"></div>
+
+</div>
+
+<div class="big-candle">
+
+<div class="big-flame"></div>
+
+</div>
+
+</div>
+
+<!-- CUT LINE -->
+
+<div
+    class="cut-line"
+    id="cutLine"
+></div>
+
+</div>
+
+</div>
+
+<div class="cut-instruction">
+
+<i class="bi bi-mouse"></i>
+
+<strong>Drag your cursor across the cake</strong>
+to cut it
+
+</div>
+
+<button
+    class="outline-button reset-cake"
+    id="resetCakeButton"
+    onclick="resetCake()"
+>
+
+<i class="bi bi-arrow-counterclockwise"></i>
+
+Reset Cake
+
+</button>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+     WISH SECTION
+========================================================= -->
+
+<section
+    class="wish-section container"
+    id="wish"
+>
+
+<div class="wish-box">
+
+<div
+    style="
+        color:#ff334f;
+        font-size:32px;
+        margin-bottom:10px;
+    "
+>
+✦
+</div>
+
+<small
+    style="
+        color:#ff334f;
+        letter-spacing:4px;
+        font-weight:bold;
+    "
+>
+
+ONE LITTLE WISH
+
+</small>
+
+<h2>
+Make a wish ✨
+</h2>
+
+<p>
+
+Write something from your heart
+and save it into the birthday database.
+
+</p>
+
+<div class="wish-input">
+
+<textarea
+    id="wishInput"
+    rows="4"
+    placeholder="Write your birthday wish here..."
+></textarea>
+
+<button
+    class="red-button mt-3"
+    onclick="saveWish()"
+>
+
+<i class="bi bi-send-heart-fill"></i>
+
+Save My Wish
+
+</button>
+
+<div id="status"></div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+     QUOTE
+========================================================= -->
+
+<section class="quote container">
+
+<div class="quote-mark">
+“
+</div>
+
+<p>
+
+Some people don't just enter our lives...
+they make our lives feel a little more beautiful.
+
+</p>
+
+<span>
+— A birthday thought ❤️
+</span>
+
+</section>
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-box">
+
+<div class="database-status">
+
+<span class="database-dot"></span>
+
+<span id="databaseStatus">
+SQL Database Connected
+</span>
+
+</div>
+
+<div>
+Made with ❤️ for a beautiful birthday
+</div>
+
+<div>
+❤️ &nbsp; 🎈 &nbsp; 🎂
+</div>
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- =========================================================
+     KNIFE CURSOR
+========================================================= -->
+
+<div
+    class="knife"
+    id="knife"
+>
+</div>
+
+<!-- =========================================================
+     MODAL
+========================================================= -->
+
+<div
+    class="birthday-modal"
+    id="birthdayModal"
+>
+
+<div class="modal-box">
+
+<button
+    class="close-modal"
+    onclick="closeCelebration()"
+>
+
+<i class="bi bi-x"></i>
+
+</button>
+
+<div class="modal-heart">
+♥️
+</div>
+
+<div
+    style="
+        color:#ff334f;
+        letter-spacing:8px;
+    "
+>
+✦ ✧ ✦
+</div>
+
+<h2>
+Happy Birthday!
+</h2>
+
+<p id="modalMessage">
+
+I hope this year brings you
+everything your heart deserves
+and fills your life with countless
+beautiful moments.
+
+</p>
+
+<button
+    class="red-button"
+    onclick="closeCelebration()"
+>
+
+Keep Smiling ❤️
+
+</button>
+
+</div>
+
+</div>
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+/* =========================================================
+   SQL DATABASE
+========================================================= */
+
+let database = null;
+
+const DEFAULT_MESSAGE =
+    "Happy birthday to the person who made me feel special. Wishing you more and more beautiful years ❤️";
+
+async function initializeDatabase() {
+
+    try {
+
+        const SQL =
+            await initSqlJs({
+
+                locateFile: file =>
+                    `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/${file}`
+
+            });
+
+        /* Check if a database was saved */
+
+        const savedDatabase =
+            localStorage.getItem(
+                "birthday_sqlite_database"
+            );
+
+        if (savedDatabase) {
+
+            const binaryString =
+                atob(savedDatabase);
+
+            const bytes =
+                new Uint8Array(
+                    binaryString.length
+                );
+
+            for (
+                let i = 0;
+                i < binaryString.length;
+                i++
+            ) {
+
+                bytes[i] =
+                    binaryString.charCodeAt(i);
+
+            }
+
+            database =
+                new SQL.Database(bytes);
+
+        }
+
+        else {
+
+            database =
+                new SQL.Database();
+
+        }
+
+        /* Create table */
+
+        database.run(`
+
+            CREATE TABLE IF NOT EXISTS birthday_messages (
+
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+                message TEXT NOT NULL,
+
+                created_at DATETIME
+                    DEFAULT CURRENT_TIMESTAMP
+
+            );
+
+        `);
+
+        database.run(`
+
+            CREATE TABLE IF NOT EXISTS birthday_names (
+
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+                name TEXT NOT NULL,
+
+                created_at DATETIME
+                    DEFAULT CURRENT_TIMESTAMP
+
+            );
+
+        `);
+
+        /* Add default message only if table is empty */
+
+        const result =
+            database.exec(`
+
+                SELECT COUNT(*)
+
+                FROM birthday_messages
+
+            `);
+
+        const count =
+            result[0].values[0][0];
+
+        if (count === 0) {
+
+            database.run(`
+
+                INSERT INTO birthday_messages
+                (message)
+
+                VALUES (?)
+
+            `, [
+                DEFAULT_MESSAGE
+            ]);
+
+        }
+
+        loadBirthdayMessage();
+
+        loadSavedName();
+
+        persistDatabase();
+
+        document.getElementById(
+            "databaseStatus"
+        ).textContent =
+            "SQL Database Connected";
+
+        console.log(
+            "SQLite database connected"
+        );
+
+    }
+
+    catch(error) {
+
+        console.error(
+            "Database error:",
+            error
+        );
+
+        document.getElementById(
+            "databaseStatus"
+        ).textContent =
+            "Database Error";
+    }
+
+}
+
+/* =========================================================
+   SAVE DATABASE TO LOCAL STORAGE
+========================================================= */
+
+function persistDatabase() {
+
+    if (!database) return;
+
+    const binary =
+        database.export();
+
+    let binaryString = "";
+
+    const chunkSize =
+        0x8000;
+
+    for (
+        let i = 0;
+        i < binary.length;
+        i += chunkSize
+    ) {
+
+        binaryString +=
+            String.fromCharCode(
+                ...binary.subarray(
+                    i,
+                    i + chunkSize
+                )
+            );
+
+    }
+
+    const base64 =
+        btoa(binaryString);
+
+    localStorage.setItem(
+        "birthday_sqlite_database",
+        base64
+    );
+}
+
+/* =========================================================
+   LOAD BIRTHDAY MESSAGE
+========================================================= */
+
+function loadBirthdayMessage() {
+
+    if (!database) return;
+
+    const result =
+        database.exec(`
+
+            SELECT message
+
+            FROM birthday_messages
+
+            ORDER BY id DESC
+
+            LIMIT 1
+
+        `);
+
+    if (
+        result.length > 0 &&
+        result[0].values.length > 0
+    ) {
+
+        const message =
+            result[0].values[0][0];
+
+        document.getElementById(
+            "birthdayMessage"
+        ).textContent =
+            message;
+
+        document.getElementById(
+            "modalMessage"
+        ).textContent =
+            message;
+
+    }
+
+}
+
+/* =========================================================
+   SAVE WISH
+========================================================= */
+
+function saveWish() {
+
+    const input =
+        document.getElementById(
+            "wishInput"
+        );
+
+    const status =
+        document.getElementById(
+            "status"
+        );
+
+    const wish =
+        input.value.trim();
+
+    if (!wish) {
+
+        status.innerHTML =
+            "Please write a little wish first ❤️";
+
+        return;
+    }
+
+    if (!database) {
+
+        status.innerHTML =
+            "Database is still loading...";
+
+        return;
+    }
+
+    database.run(`
+
+        INSERT INTO birthday_messages
+        (message)
+
+        VALUES (?)
+
+    `, [
+        wish
+    ]);
+
+    persistDatabase();
+
+    status.innerHTML =
+        "❤️ Your beautiful wish has been saved!";
+
+    input.value = "";
+
+    loadBirthdayMessage();
+
+    createConfetti();
+}
+
+/* =========================================================
+   SAVE NAME
+========================================================= */
+
+function updateCakeName() {
+
+    const input =
+        document.getElementById(
+            "nameInput"
+        );
+
+    let name =
+        input.value.trim();
+
+    if (!name) {
+
+        name = "Birthday Star";
+
+        input.value =
+            name;
+    }
+
+    document.getElementById(
+        "cakeNameLeft"
+    ).textContent =
+        name;
+
+    document.getElementById(
+        "cakeNameRight"
+    ).textContent =
+        name;
+
+    /* Save name in SQLite */
+
+    if (database) {
+
+        database.run(`
+
+            INSERT INTO birthday_names
+            (name)
+
+            VALUES (?)
+
+        `, [
+            name
+        ]);
+
+        persistDatabase();
+    }
+
+    /* Animation */
+
+    document
+        .querySelectorAll(".cake-name")
+        .forEach(element => {
+
+            element.animate(
+
+                [
+                    {
+                        opacity: 0,
+                        transform:
+                            "translateZ(42px) scale(0.5)"
+                    },
+
+                    {
+                        opacity: 1,
+                        transform:
+                            "translateZ(42px) scale(1.15)"
+                    },
+
+                    {
+                        opacity: 1,
+                        transform:
+                            "translateZ(42px) scale(1)"
+                    }
+                ],
+
+                {
+                    duration: 800,
+                    easing: "ease-out"
+                }
+
+            );
+
+        });
+
+    createConfetti();
+
+}
+
+/* =========================================================
+   LOAD SAVED NAME
+========================================================= */
+
+function loadSavedName() {
+
+    if (!database) return;
+
+    const result =
+        database.exec(`
+
+            SELECT name
+
+            FROM birthday_names
+
+            ORDER BY id DESC
+
+            LIMIT 1
+
+        `);
+
+    if (
+        result.length > 0 &&
+        result[0].values.length > 0
+    ) {
+
+        const name =
+            result[0].values[0][0];
+
+        document.getElementById(
+            "nameInput"
+        ).value =
+            name;
+
+        document.getElementById(
+            "cakeNameLeft"
+        ).textContent =
+            name;
+
+        document.getElementById(
+            "cakeNameRight"
+        ).textContent =
+            name;
+
+    }
+
+}
+
+/* =========================================================
+   STARS
+========================================================= */
+
+const stars =
+    document.getElementById(
+        "stars"
+    );
+
+for (
+    let i = 0;
+    i < 120;
+    i++
+) {
+
+    const star =
+        document.createElement(
+            "span"
+        );
+
+    star.className =
+        "star";
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+    star.style.top =
+        Math.random() * 100 + "%";
+
+    star.style.animationDelay =
+        Math.random() * 4 + "s";
+
+    star.style.animationDuration =
+        2 + Math.random() * 4 + "s";
+
+    stars.appendChild(
+        star
+    );
+}
+
+/* =========================================================
+   BALLOONS
+========================================================= */
+
+function createBalloon() {
+
+    const balloon =
+        document.createElement(
+            "div"
+        );
+
+    balloon.className =
+        "balloon";
+
+    const types = [
+        "red",
+        "dark",
+        "crimson"
+    ];
+
+    balloon.classList.add(
+        types[
+            Math.floor(
+                Math.random() *
+                types.length
+            )
+        ]
+    );
+
+    balloon.style.left =
+        Math.random() * 100 + "vw";
+
+    balloon.style.animationDuration =
+        10 + Math.random() * 10 + "s";
+
+    balloon.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    balloon.style.transform =
+        `scale(${0.65 + Math.random() * 0.6})`;
+
+    document
+        .getElementById(
+            "balloons"
+        )
+        .appendChild(
+            balloon
+        );
+
+    setTimeout(
+        () => balloon.remove(),
+        23000
+    );
+}
+
+for (
+    let i = 0;
+    i < 14;
+    i++
+) {
+
+    setTimeout(
+        createBalloon,
+        i * 600
+    );
+}
+
+setInterval(
+    createBalloon,
+    1800
+);
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+setInterval(() => {
+
+    const heart =
+        document.createElement(
+            "div"
+        );
+
+    heart.className =
+        "floating-heart";
+
+    heart.innerHTML =
+        Math.random() > 0.5
+            ? "♥"
+            : "✦";
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        12 + Math.random() * 20 + "px";
+
+    heart.style.animationDuration =
+        6 + Math.random() * 7 + "s";
+
+    document.body.appendChild(
+        heart
+    );
+
+    setTimeout(
+        () => heart.remove(),
+        14000
+    );
+
+}, 500);
+
+/* =========================================================
+   AUTO LIGHT CANDLES
+========================================================= */
+
+const candles =
+    document.querySelectorAll(
+        ".candle"
+    );
+
+/*
+   Candle 1 lights after 1 second.
+   Candle 2 lights after 2 seconds.
+   Candle 3 lights after 3 seconds.
+*/
+
+candles.forEach(
+    (candle, index) => {
+
+        setTimeout(
+            () => {
+
+                if (
+                    !candle.classList.contains(
+                        "extinguished"
+                    )
+                ) {
+
+                    candle.classList.remove(
+                        "not-lit"
+                    );
+
+                    candle.classList.add(
+                        "lit"
+                    );
+
+                }
+
+            },
+
+            1000 +
+            index * 1000
+        );
+
+    }
+);
+
+/* =========================================================
+   TOGGLE ONE CANDLE
+========================================================= */
+
+function toggleCandle(candle) {
+
+    if (
+        candle.classList.contains(
+            "extinguished"
+        )
+    ) {
+
+        candle.classList.remove(
+            "extinguished"
+        );
+
+        candle.classList.remove(
+            "not-lit"
+        );
+
+        candle.classList.add(
+            "lit"
+        );
+
+        return;
+    }
+
+    candle.classList.remove(
+        "lit"
+    );
+
+    candle.classList.add(
+        "extinguished"
+    );
+
+    createSmoke();
+
+    checkAllCandles();
+}
+
+/* =========================================================
+   RELIGHT ALL
+========================================================= */
+
+function relightCandles() {
+
+    candles.forEach(
+        candle => {
+
+            candle.classList.remove(
+                "extinguished"
+            );
+
+            candle.classList.remove(
+                "not-lit"
+            );
+
+            candle.classList.add(
+                "lit"
+            );
+
+        }
+    );
+
+}
+
+/* =========================================================
+   BLOW ALL CANDLES
+========================================================= */
+
+function blowAllCandles() {
+
+    let newlyBlown =
+        false;
+
+    candles.forEach(
+        candle => {
+
+            if (
+                !candle.classList.contains(
+                    "extinguished"
+                )
+            ) {
+
+                candle.classList.remove(
+                    "lit"
+                );
+
+                candle.classList.add(
+                    "extinguished"
+                );
+
+                newlyBlown =
+                    true;
+            }
+
+        }
+    );
+
+    if (newlyBlown) {
+
+        createSmoke();
+
+        setTimeout(
+            createConfetti,
+            300
+        );
+
+        setTimeout(
+            celebrate,
+            900
+        );
+    }
+
+}
+
+/* =========================================================
+   CHECK ALL CANDLES
+========================================================= */
+
+function checkAllCandles() {
+
+    const extinguished =
+        document.querySelectorAll(
+            ".candle.extinguished"
+        );
+
+    if (
+        extinguished.length ===
+        candles.length
+    ) {
+
+        setTimeout(
+            () => {
+
+                createConfetti();
+
+                celebrate();
+
+            },
+            500
+        );
+
+    }
+
+}
+
+/* =========================================================
+   SMOKE
+========================================================= */
+
+function createSmoke() {
+
+    const smoke =
+        document.createElement(
+            "div"
+        );
+
+    smoke.innerHTML =
+        "☁";
+
+    smoke.style.position =
+        "fixed";
+
+    smoke.style.left =
+        50 + Math.random() * 10 + "%";
+
+    smoke.style.top =
+        40 + Math.random() * 10 + "%";
+
+    smoke.style.color =
+        "rgba(220,220,220,0.6)";
+
+    smoke.style.fontSize =
+        "30px";
+
+    smoke.style.zIndex =
+        "100000";
+
+    smoke.style.pointerEvents =
+        "none";
+
+    document.body.appendChild(
+        smoke
+    );
+
+    smoke.animate(
+
+        [
+
+            {
+                transform:
+                    "translateY(0) scale(0.5)",
+
+                opacity: 0.8
+            },
+
+            {
+
+                transform:
+                    "translateY(-80px) scale(1.5)",
+
+                opacity: 0
+            }
+
+        ],
+
+        {
+
+            duration: 1500,
+
+            easing:
+                "ease-out"
+
+        }
+
+    ).onfinish =
+        () => smoke.remove();
+
+}
+
+/* =========================================================
+   3D CAKE CURSOR TILT
+========================================================= */
+
+const cakeStage =
+    document.getElementById(
+        "cakeStage"
+    );
+
+const cakeScene =
+    document.getElementById(
+        "cakeScene"
+    );
+
+const knife =
+    document.getElementById(
+        "knife"
+    );
+
+let cakeCut =
+    false;
+
+let dragging =
+    false;
+
+let startX =
+    0;
+
+let startY =
+    0;
+
+cakeStage.addEventListener(
+    "pointermove",
+    event => {
+
+        const rect =
+            cakeStage.getBoundingClientRect();
+
+        const x =
+            (event.clientX - rect.left)
+            / rect.width
+            - 0.5;
+
+        const y =
+            (event.clientY - rect.top)
+            / rect.height
+            - 0.5;
+
+        if (!dragging) {
+
+            cakeScene.style.setProperty(
+                "--tiltY",
+                `${x * 14}deg`
+            );
+
+            cakeScene.style.setProperty(
+                "--tiltX",
+                `${-y * 10}deg`
+            );
+
+        }
+
+        /* Knife follows cursor */
+
+        knife.style.left =
+            event.clientX + "px";
+
+        knife.style.top =
+            event.clientY + "px";
+
+        knife.classList.add(
+            "active"
+        );
+
+        /* Detect cutting swipe */
+
+        if (dragging && !cakeCut) {
+
+            const deltaX =
+                event.clientX - startX;
+
+            const deltaY =
+                event.clientY - startY;
+
+            if (
+                Math.abs(deltaX) > 110 &&
+                Math.abs(deltaY) < 90
+            ) {
+
+                cutCake();
+
+            }
+
+        }
+
+    }
+);
+
+/* =========================================================
+   START CUT
+========================================================= */
+
+cakeStage.addEventListener(
+    "pointerdown",
+    event => {
+
+        if (cakeCut) return;
+
+        dragging =
+            true;
+
+        startX =
+            event.clientX;
+
+        startY =
+            event.clientY;
+
+        knife.classList.add(
+            "active"
+        );
+
+        try {
+
+            cakeStage.setPointerCapture(
+                event.pointerId
+            );
+
+        }
+
+        catch(error) {}
+
+    }
+);
+
+/* =========================================================
+   END CUT
+========================================================= */
+
+cakeStage.addEventListener(
+    "pointerup",
+    event => {
+
+        dragging =
+            false;
+
+        try {
+
+            cakeStage.releasePointerCapture(
+                event.pointerId
+            );
+
+        }
+
+        catch(error) {}
+
+    }
+);
+
+cakeStage.addEventListener(
+    "pointerleave",
+    () => {
+
+        if (!dragging) {
+
+            knife.classList.remove(
+                "active"
+            );
+
+        }
+
+    }
+);
+
+/* =========================================================
+   CUT CAKE
+========================================================= */
+
+function cutCake() {
+
+    if (cakeCut) return;
+
+    cakeCut =
+        true;
+
+    dragging =
+        false;
+
+    cakeScene.classList.add(
+        "cut"
+    );
+
+    knife.classList.remove(
+        "active"
+    );
+
+    document
+        .getElementById(
+            "resetCakeButton"
+        )
+        .classList.add(
+            "show"
+        );
+
+    createCutSparks();
+
+    setTimeout(
+        createConfetti,
+        250
+    );
+
+    setTimeout(
+        celebrate,
+        1100
+    );
+
+}
+
+/* =========================================================
+   CUT SPARKS
+========================================================= */
+
+function createCutSparks() {
+
+    const rect =
+        cakeStage.getBoundingClientRect();
+
+    const centerX =
+        rect.left +
+        rect.width / 2;
+
+    const centerY =
+        rect.top +
+        rect.height / 2;
+
+    for (
+        let i = 0;
+        i < 50;
+        i++
+    ) {
+
+        const spark =
+            document.createElement(
+                "div"
+            );
+
+        spark.style.position =
+            "fixed";
+
+        spark.style.left =
+            centerX + "px";
+
+        spark.style.top =
+            centerY + "px";
+
+        spark.style.width =
+            "5px";
+
+        spark.style.height =
+            "5px";
+
+        spark.style.borderRadius =
+            "50%";
+
+        spark.style.background =
+            i % 2 === 0
+                ? "#ff334f"
+                : "#ffffff";
+
+        spark.style.boxShadow =
+            "0 0 12px #ff334f";
+
+        spark.style.zIndex =
+            "100000";
+
+        spark.style.pointerEvents =
+            "none";
+
+        document.body.appendChild(
+            spark
+        );
+
+        const angle =
+            Math.random() *
+            Math.PI *
+            2;
+
+        const distance =
+            50 +
+            Math.random() *
+            160;
+
+        spark.animate(
+
+            [
+
+                {
+                    transform:
+                        "translate(-50%, -50%) scale(1)",
+                    opacity: 1
+                },
+
+                {
+
+                    transform:
+                        `translate(
+                            ${Math.cos(angle) * distance}px,
+                            ${Math.sin(angle) * distance}px
+                        )
+                        scale(0)`,
+
+                    opacity: 0
+
+                }
+
+            ],
+
+            {
+
+                duration:
+                    700 +
+                    Math.random() * 500,
+
+                easing:
+                    "cubic-bezier(.2,.8,.3,1)"
+
+            }
+
+        ).onfinish =
+            () => spark.remove();
+
+    }
+
+}
+
+/* =========================================================
+   RESET CAKE
+========================================================= */
+
+function resetCake() {
+
+    cakeCut =
+        false;
+
+    cakeScene.classList.remove(
+        "cut"
+    );
+
+    document
+        .getElementById(
+            "resetCakeButton"
+        )
+        .classList.remove(
+            "show"
+        );
+
+}
+
+/* =========================================================
+   CELEBRATION
+========================================================= */
+
+function celebrate() {
+
+    const modal =
+        document.getElementById(
+            "birthdayModal"
+        );
+
+    modal.classList.add(
+        "show"
+    );
+
+    createConfetti();
+
+}
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+function closeCelebration() {
+
+    document
+        .getElementById(
+            "birthdayModal"
+        )
+        .classList.remove(
+            "show"
+        );
+
+}
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+function createConfetti() {
+
+    const colors = [
+
+        "#ff334f",
+        "#ff1744",
+        "#ffffff",
+        "#99001c",
+        "#777777"
+
+    ];
+
+    for (
+        let i = 0;
+        i < 140;
+        i++
+    ) {
+
+        const confetti =
+            document.createElement(
+                "div"
+            );
+
+        confetti.style.position =
+            "fixed";
+
+        confetti.style.left =
+            Math.random() * 100 + "vw";
+
+        confetti.style.top =
+            "-20px";
+
+        confetti.style.width =
+            5 +
+            Math.random() * 7 +
+            "px";
+
+        confetti.style.height =
+            8 +
+            Math.random() * 12 +
+            "px";
+
+        confetti.style.background =
+            colors[
+                Math.floor(
+                    Math.random() *
+                    colors.length
+                )
+            ];
+
+        confetti.style.zIndex =
+            "100000";
+
+        confetti.style.borderRadius =
+            "3px";
+
+        document.body.appendChild(
+            confetti
+        );
+
+        const animation =
+            confetti.animate(
+
+                [
+
+                    {
+
+                        transform:
+                            "translateY(0) rotate(0deg)",
+
+                        opacity: 1
+
+                    },
+
+                    {
+
+                        transform:
+                            `translateY(110vh)
+                             rotate(${360 + Math.random() * 720}deg)`,
+
+                        opacity: 0
+
+                    }
+
+                ],
+
+                {
+
+                    duration:
+                        2000 +
+                        Math.random() * 3000,
+
+                    easing:
+                        "cubic-bezier(.2,.7,.4,1)"
+
+                }
+
+            );
+
+        animation.onfinish =
+            () => confetti.remove();
+
+    }
+
+}
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+let audioContext =
+    null;
+
+let oscillator =
+    null;
+
+let gainNode =
+    null;
+
+let musicOn =
+    false;
+
+const musicButton =
+    document.getElementById(
+        "musicButton"
+    );
+
+musicButton.addEventListener(
+    "click",
+    () => {
+
+        if (musicOn) {
+
+            stopMusic();
+
+        }
+
+        else {
+
+            startMusic();
+
+        }
+
+    }
+);
+
+function startMusic() {
+
+    audioContext =
+        new (
+            window.AudioContext ||
+            window.webkitAudioContext
+        )();
+
+    oscillator =
+        audioContext.createOscillator();
+
+    gainNode =
+        audioContext.createGain();
+
+    oscillator.type =
+        "sine";
+
+    oscillator.frequency.value =
+        261.63;
+
+    gainNode.gain.value =
+        0.025;
+
+    oscillator.connect(
+        gainNode
+    );
+
+    gainNode.connect(
+        audioContext.destination
+    );
+
+    oscillator.start();
+
+    musicOn =
+        true;
+
+    musicButton.innerHTML =
+        `
+        <i class="bi bi-pause-fill"></i>
+        Music On
+        `;
+
+}
+
+function stopMusic() {
+
+    if (oscillator) {
+
+        try {
+            oscillator.stop();
+        }
+
+        catch(error) {}
+
+        oscillator.disconnect();
+    }
+
+    if (gainNode) {
+
+        gainNode.disconnect();
+    }
+
+    if (audioContext) {
+
+        audioContext.close();
+    }
+
+    oscillator =
+        null;
+
+    gainNode =
+        null;
+
+    audioContext =
+        null;
+
+    musicOn =
+        false;
+
+    musicButton.innerHTML =
+        `
+        <i class="bi bi-music-note-beamed"></i>
+        Music
+        `;
+
+}
+
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeCelebration();
+
+        }
+
+    }
+);
+
+/* =========================================================
+   ENTER KEY FOR NAME
+========================================================= */
+
+document
+    .getElementById(
+        "nameInput"
+    )
+    .addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                updateCakeName();
+
+            }
+
+        }
+    );
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+initializeDatabase();
+
+</script>
+
+<!-- =========================================================
+     BOOTSTRAP JAVASCRIPT
+========================================================= -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+></script>
+
+</body>
+</html>
